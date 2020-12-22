@@ -1,0 +1,53 @@
+<h2>My Tasks</h2>
+<ul class="heroes">
+  <div class="newtask">
+        <button mat-raised-button class = "newtaskbut" color="accent" [disabled]="newTaskData.show" (click)="newTask()">New task</button>
+    </div>
+<div class="col-12 p-0 p-4 mb-4 new-task-container" *ngIf="newTaskData.show">
+      <!-- <div class="col-12 row p-0 m-0 justify-content-center text-normal-22">
+        New task
+      </div> -->
+      <div class="col-12 p-0">
+        <form class="col-12 p-0">
+          <mat-form-field class="col-12 p-0" appearance="fill">
+            <mat-label>Task description</mat-label>
+            <input maxlength="256" matInput [formControl]="newTaskData.control"/>
+            <mat-hint align="end">{{newTaskData.control.value.length}} / 256</mat-hint>
+          </mat-form-field>
+        </form>
+      </div>
+      <div class="col-12 row p-0 m-0 justify-content-end">
+        <div class="col-auto p-0">
+          <button mat-button color="basic" (click)="cancelNewTask()">Cancelar</button>
+        </div>
+        <div class="col-auto p-0 ml-3">
+          <button mat-button color="primary" (click)="createTask()">Crear</button>
+        </div>
+      </div>
+    </div>
+
+
+  <mat-card *ngFor="let task of tasks, index as idx"
+  [class.selected]="task === selectedTask"
+  (click)="onSelect(task)">
+ <mat-card-title>{{task.descripcion}}</mat-card-title>
+  <mat-card-content><div class = "wrapper">
+                          <div class = "empty"></div>
+                          <div class ="desc">
+                            <mat-form-field appearance="fill">
+                            <mat-label>Task status</mat-label>
+                            <mat-select [(value)]="task.estado" (selectionChange)="updateTask(idx)">
+                              
+                                 <mat-option *ngFor="let state of states" [value]="state">{{state}}</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                            </div>
+                          
+                          <div class = "div_button"><button mat-flat-button color="accent" (click)="delTask(idx+1)">Eliminar</button></div>
+                          
+                    </div>
+  </mat-card-content>
+  <mat-divider></mat-divider>
+ </mat-card>
+  
+</ul>

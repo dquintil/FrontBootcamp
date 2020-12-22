@@ -1,0 +1,24 @@
+.wrapper{
+    display: flex;
+    width: 100%;
+}
+.empty{
+    
+    width:50%;
+}
+.desc{
+    width:50%;
+    padding-right: 20%;
+    float: left;
+    text-align: right;
+    
+}
+mat-card{
+    background-color: beige;
+}
+.newtask{
+    width: auto;
+}
+.newtaskbut{
+    
+}
